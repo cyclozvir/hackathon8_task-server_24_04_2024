@@ -1,10 +1,12 @@
 package org.yaremax.hackathon8_task_24_04_2024.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.hibernate.PropertyValueException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -59,6 +61,32 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = ResourceNotFoundException.class)
     public ResponseEntity<Object> handleResourceNotFoundException(RuntimeException ex, HttpServletRequest request){
+        ApiException apiException = ApiException.builder()
+                .httpStatus(HttpStatus.NOT_FOUND)
+                .message(ex.getMessage())
+                .timeStamp(ZonedDateTime.now(ZoneId.of("Z")))
+                .build();
+
+        LOGGER.error("⚠⚠⚠ Exception was thrown with message: {}", ex.getMessage());
+
+        return new ResponseEntity<>(apiException, apiException.httpStatus());
+    }
+
+    @ExceptionHandler(value = PropertyValueException.class)
+    public ResponseEntity<Object> handlePropertyValueException(RuntimeException ex, HttpServletRequest request){
+        ApiException apiException = ApiException.builder()
+                .httpStatus(HttpStatus.NOT_FOUND)
+                .message(ex.getMessage())
+                .timeStamp(ZonedDateTime.now(ZoneId.of("Z")))
+                .build();
+
+        LOGGER.error("⚠⚠⚠ Exception was thrown with message: {}", ex.getMessage());
+
+        return new ResponseEntity<>(apiException, apiException.httpStatus());
+    }
+
+    @ExceptionHandler(value = BadCredentialsException.class)
+    public ResponseEntity<Object> handleBadCredentialsException(RuntimeException ex, HttpServletRequest request){
         ApiException apiException = ApiException.builder()
                 .httpStatus(HttpStatus.NOT_FOUND)
                 .message(ex.getMessage())
