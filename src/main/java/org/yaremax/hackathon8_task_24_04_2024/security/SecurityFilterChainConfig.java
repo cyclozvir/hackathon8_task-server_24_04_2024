@@ -3,6 +3,7 @@ package org.yaremax.hackathon8_task_24_04_2024.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,10 +27,9 @@ public class SecurityFilterChainConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/events", "/api/v1/events/user/{userId}").hasAuthority("ROLE_HELPER")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/events").hasAuthority("ROLE_IN_NEED")
                         .anyRequest().authenticated())
-//                .authorizeHttpRequests(authz -> authz
-//                        .requestMatchers("/api/v1/events").()
-//                        .anyRequest().authenticated())
                 .sessionManagement(s -> s
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)

@@ -6,7 +6,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
@@ -15,7 +16,17 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(userEntity.getRole().name()));
+        Set<GrantedAuthority> authorities = new HashSet<>();
+
+        if (userEntity.getRole() == Role.HELPER) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_HELPER"));
+        } else if (userEntity.getRole() == Role.IN_NEED) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_IN_NEED"));
+        } else {
+            throw new IllegalArgumentException("Invalid role for user: " + userEntity.getRole());
+        }
+
+        return authorities;
     }
 
     @Override
