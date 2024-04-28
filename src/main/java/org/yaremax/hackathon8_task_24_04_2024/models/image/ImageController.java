@@ -35,14 +35,13 @@ public class ImageController {
         return ResponseEntity.ok("Success");
     }
 
-    @ApiOperation(value = "Отримати зображення за категорією", notes = "Повертає зображення за заданою категорією")
+    @ApiOperation(value = "Отримати зображення за id", notes = "Повертає зображення за id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Успішно повернуто зображення"),
             @ApiResponse(code = 404, message = "Зображення не знайдено")
     })
-    @GetMapping(produces = MediaType.IMAGE_JPEG_VALUE)
-    public Resource getImageByCategory(@RequestParam(value = "category_id", required = false) Long categoryId) {
-        byte[] imageBytes = imageService.getImageByCategory(categoryId);
-        return new ByteArrayResource(imageBytes);
+    @GetMapping(value = "/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public Resource downloadImage(@PathVariable Long id) {
+        return new ByteArrayResource(imageService.getImageById(id));
     }
 }
