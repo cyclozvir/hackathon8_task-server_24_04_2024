@@ -3,6 +3,7 @@ package org.yaremax.hackathon8_task_24_04_2024.event;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.yaremax.hackathon8_task_24_04_2024.user.UserEntity;
+import org.yaremax.hackathon8_task_24_04_2024.exceptions.ResourceNotFoundException;
 import org.yaremax.hackathon8_task_24_04_2024.util.ReferenceService;
 
 import java.time.LocalDate;
@@ -23,8 +24,8 @@ public class EventService {
         return eventRepository.findByCreator(userReference);  // TODO: filter resolved
     }
 
-    public void createEvent(EventDto eventDto) {
-        UserEntity userReference = referenceService.getUserReferenceById(eventDto.creator_id());
+    public void createEvent(EventDto eventDto, String email) {
+        UserEntity userReference = referenceService.getUserReferenceByEmail(email);
 
         EventEntity event = EventEntity.builder()
                 .creator(userReference)
@@ -34,5 +35,10 @@ public class EventService {
                 .build();
 
         eventRepository.saveAndFlush(event);
+    }
+
+    public EventEntity getEventById(Long id) {
+        return eventRepository.findById(id)
+                .orElseThrow(() ->new ResourceNotFoundException("ніц"));
     }
 }

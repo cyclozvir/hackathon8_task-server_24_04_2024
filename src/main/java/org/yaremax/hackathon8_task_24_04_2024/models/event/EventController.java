@@ -2,7 +2,9 @@ package org.yaremax.hackathon8_task_24_04_2024.event;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -20,6 +22,11 @@ public class EventController {
         return ResponseEntity.ok(events);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<EventEntity> getEventById(@PathVariable Long id) {
+        return ResponseEntity.ok(eventService.getEventById(id));
+    }
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<EventEntity>> getEventsByUser(@PathVariable Long userId) {
         List<EventEntity> events = eventService.getEventsByUser(userId);
@@ -27,8 +34,10 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createEvent(@RequestBody EventDto eventDto) {
-        eventService.createEvent(eventDto);
+    public ResponseEntity<String> createEvent(Authentication authentication,
+                                              @RequestBody EventDto eventDto,
+                                              @RequestParam MultipartFile multipartImage) {
+        eventService.createEvent(eventDto, authentication.getName());
         return ResponseEntity.ok("Success");
     }
 }
