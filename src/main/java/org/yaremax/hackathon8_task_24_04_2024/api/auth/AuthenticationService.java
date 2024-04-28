@@ -35,7 +35,7 @@ public class AuthenticationService {
         userService.addUser(userEntity);
 
         String jwtToken = jwtService.generateToken(new UserDetailsImpl(userEntity));
-        return new AuthenticationResponse(jwtToken);
+        return new AuthenticationResponse(jwtToken, userEntity.getRole());
     }
 
     public AuthenticationResponse registerHelperUser(RegisterRequest request) {
@@ -49,7 +49,7 @@ public class AuthenticationService {
         userService.addUser(userEntity);
 
         String jwtToken = jwtService.generateToken(new UserDetailsImpl(userEntity));
-        return new AuthenticationResponse(jwtToken);
+        return new AuthenticationResponse(jwtToken, userEntity.getRole());
     }
 
     public AuthenticationResponse login(LoginRequest request) {
@@ -63,6 +63,6 @@ public class AuthenticationService {
         UserEntity userEntity = userService.findUserByEmail(request.email());
 
         String jwtToken = jwtService.generateToken(new UserDetailsImpl(userEntity));
-        return new AuthenticationResponse(jwtToken);
+        return new AuthenticationResponse(jwtToken, userEntity.getRole());
     }
 }
