@@ -1,8 +1,8 @@
-package org.yaremax.hackathon8_task_24_04_2024.event;
+package org.yaremax.hackathon8_task_24_04_2024.models.event;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserEntity;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserEntity;
 
 import java.util.List;
 
