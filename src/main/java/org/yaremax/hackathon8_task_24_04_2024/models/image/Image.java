@@ -2,6 +2,7 @@ package org.yaremax.hackathon8_task_24_04_2024.models.image;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.yaremax.hackathon8_task_24_04_2024.models.category.Category;
 
 @Entity
 @Table(name = "images")
@@ -21,6 +22,8 @@ class Image {
 
     private String name;
 
-    private String category;
+    @OneToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 }
 

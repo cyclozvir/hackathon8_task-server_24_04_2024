@@ -18,20 +18,20 @@ public class ImageController {
     private final ImageService imageService;
 
     @PostMapping
-    public ResponseEntity<String> uploadImage(@RequestParam MultipartFile multipartImage,
-                                            @RequestParam(required = false) String category) throws Exception {
-        imageService.addImage(multipartImage, category);
+    public ResponseEntity<String> uploadImage(@RequestParam("multipartImage") MultipartFile multipartImage,
+                                              @RequestParam(value = "category_id", required = false) Long categoryId) throws Exception {
+        imageService.addImage(multipartImage, categoryId);
         return ResponseEntity.ok("Success");
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public Resource downloadImage(@PathVariable Long id) {
-        return new ByteArrayResource(imageService.getImageById(id));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Image>> getImages(@RequestParam(required = false) String category) throws Exception {
-        if (category != null) return ResponseEntity.ok(imageService.getImagesByCategory(category));
-        else return ResponseEntity.ok(imageService.getImages());
+    @ApiOperation(value = "Отримати зображення за категорією", notes = "Повертає зображення за заданою категорією")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Успішно повернуто зображення"),
+            @ApiResponse(code = 404, message = "Зображення не знайдено")
+    })
+    @GetMapping(produces = MediaType.IMAGE_JPEG_VALUE)
+    public Resource getImageByCategory(@RequestParam(value = "category_id", required = false) Long categoryId) {
+        byte[] imageBytes = imageService.getImageByCategory(categoryId);
+        return new ByteArrayResource(imageBytes);
     }
 }
