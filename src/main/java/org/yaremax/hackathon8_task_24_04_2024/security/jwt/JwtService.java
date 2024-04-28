@@ -1,4 +1,4 @@
-package org.yaremax.hackathon8_task_24_04_2024.jwt;
+package org.yaremax.hackathon8_task_24_04_2024.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

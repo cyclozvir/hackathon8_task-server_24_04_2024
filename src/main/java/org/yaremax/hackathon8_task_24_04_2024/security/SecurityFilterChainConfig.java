@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.yaremax.hackathon8_task_24_04_2024.jwt.JwtAuthenticationFilter;
+import org.yaremax.hackathon8_task_24_04_2024.security.jwt.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity

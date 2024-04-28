@@ -1,4 +1,4 @@
-package org.yaremax.hackathon8_task_24_04_2024.api.event;
+package org.yaremax.hackathon8_task_24_04_2024.event;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

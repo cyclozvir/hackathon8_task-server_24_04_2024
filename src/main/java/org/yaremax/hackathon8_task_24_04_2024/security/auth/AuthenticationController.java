@@ -1,11 +1,11 @@
-package org.yaremax.hackathon8_task_24_04_2024.api.auth;
+package org.yaremax.hackathon8_task_24_04_2024.security.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.yaremax.hackathon8_task_24_04_2024.api.auth.records.RegisterRequest;
-import org.yaremax.hackathon8_task_24_04_2024.api.auth.records.AuthenticationResponse;
-import org.yaremax.hackathon8_task_24_04_2024.api.auth.records.LoginRequest;
+import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.RegisterRequest;
+import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.AuthenticationResponse;
+import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.LoginRequest;
 
 @RestController
 @RequestMapping("/api/v1/auth")

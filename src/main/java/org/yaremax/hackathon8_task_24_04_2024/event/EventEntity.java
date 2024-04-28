@@ -1,4 +1,4 @@
-package org.yaremax.hackathon8_task_24_04_2024.api.event;
+package org.yaremax.hackathon8_task_24_04_2024.event;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

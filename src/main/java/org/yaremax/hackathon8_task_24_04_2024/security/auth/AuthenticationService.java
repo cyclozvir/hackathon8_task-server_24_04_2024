@@ -1,15 +1,14 @@
-package org.yaremax.hackathon8_task_24_04_2024.api.auth;
+package org.yaremax.hackathon8_task_24_04_2024.security.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.yaremax.hackathon8_task_24_04_2024.api.auth.records.LoginRequest;
-import org.yaremax.hackathon8_task_24_04_2024.api.auth.records.RegisterRequest;
-import org.yaremax.hackathon8_task_24_04_2024.api.auth.records.AuthenticationResponse;
-import org.yaremax.hackathon8_task_24_04_2024.jwt.JwtService;
+import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.LoginRequest;
+import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.RegisterRequest;
+import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.AuthenticationResponse;
+import org.yaremax.hackathon8_task_24_04_2024.security.jwt.JwtService;
 import org.yaremax.hackathon8_task_24_04_2024.user.Role;
 import org.yaremax.hackathon8_task_24_04_2024.user.UserDetailsImpl;
 import org.yaremax.hackathon8_task_24_04_2024.user.UserEntity;
