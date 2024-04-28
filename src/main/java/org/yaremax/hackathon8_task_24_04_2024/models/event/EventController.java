@@ -17,14 +17,13 @@ public class EventController {
     private final EventService eventService;
 
     @GetMapping
-    public ResponseEntity<List<EventEntity>> getAllEvents() {
-        List<EventEntity> events = eventService.getAllEvents();
-        return ResponseEntity.ok(events);
+    public ResponseEntity<List<EventEntityInfo>> getAllEvents() {
+        return ResponseEntity.ok(eventService.getAllEventsInfos());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventEntity> getEventById(@PathVariable Long id) {
-        return ResponseEntity.ok(eventService.getEventById(id));
+    public ResponseEntity<EventEntityInfo> getEventById(@PathVariable Long id) {
+        return ResponseEntity.ok(eventService.getEventInfoById(id));
     }
 
     @GetMapping("/user/{userId}")
@@ -35,8 +34,7 @@ public class EventController {
 
     @PostMapping
     public ResponseEntity<String> createEvent(Authentication authentication,
-                                              @RequestBody EventDto eventDto,
-                                              @RequestParam MultipartFile multipartImage) {
+                                              @RequestBody EventDto eventDto) {
         eventService.createEvent(eventDto, authentication.getName());
         return ResponseEntity.ok("Success");
     }

@@ -27,8 +27,9 @@ public class SecurityFilterChainConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/tags", "/api/v1/categories", "/api/v1/images").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/events", "/api/v1/events/user/{userId}").hasAuthority("ROLE_HELPER")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/events").hasAuthority("ROLE_IN_NEED")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/events", "/api/v1/images", "/api/v1/categories", "/api/v1/tags").hasAuthority("ROLE_IN_NEED")
                         .anyRequest().authenticated())
                 .sessionManagement(s -> s
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
