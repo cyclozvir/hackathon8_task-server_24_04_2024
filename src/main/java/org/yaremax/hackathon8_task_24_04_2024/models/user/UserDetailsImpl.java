@@ -1,4 +1,4 @@
-package org.yaremax.hackathon8_task_24_04_2024.user;
+package org.yaremax.hackathon8_task_24_04_2024.models.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

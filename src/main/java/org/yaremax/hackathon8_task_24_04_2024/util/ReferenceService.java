@@ -2,9 +2,9 @@ package org.yaremax.hackathon8_task_24_04_2024.util;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserEntity;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserRepository;
 import org.yaremax.hackathon8_task_24_04_2024.exceptions.ResourceNotFoundException;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserEntity;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserRepository;
 
 @Service
 @AllArgsConstructor

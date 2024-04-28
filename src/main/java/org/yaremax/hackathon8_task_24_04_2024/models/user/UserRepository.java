@@ -1,4 +1,4 @@
-package org.yaremax.hackathon8_task_24_04_2024.user;
+package org.yaremax.hackathon8_task_24_04_2024.models.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

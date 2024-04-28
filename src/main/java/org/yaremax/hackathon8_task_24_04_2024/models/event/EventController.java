@@ -1,4 +1,4 @@
-package org.yaremax.hackathon8_task_24_04_2024.event;
+package org.yaremax.hackathon8_task_24_04_2024.models.event;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

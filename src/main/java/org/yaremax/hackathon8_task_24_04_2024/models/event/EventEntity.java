@@ -1,11 +1,11 @@
-package org.yaremax.hackathon8_task_24_04_2024.event;
+package org.yaremax.hackathon8_task_24_04_2024.models.event;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserEntity;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserEntity;
 
 import java.time.LocalDate;
 

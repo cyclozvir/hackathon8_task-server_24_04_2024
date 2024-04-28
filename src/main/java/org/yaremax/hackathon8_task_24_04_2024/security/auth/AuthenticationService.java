@@ -9,10 +9,10 @@ import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.LoginRequest
 import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.RegisterRequest;
 import org.yaremax.hackathon8_task_24_04_2024.security.auth.records.AuthenticationResponse;
 import org.yaremax.hackathon8_task_24_04_2024.security.jwt.JwtService;
-import org.yaremax.hackathon8_task_24_04_2024.user.Role;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserDetailsImpl;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserEntity;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserService;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.Role;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserDetailsImpl;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserEntity;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserService;
 
 @Service
 @RequiredArgsConstructor

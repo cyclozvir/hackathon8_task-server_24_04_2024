@@ -1,9 +1,9 @@
-package org.yaremax.hackathon8_task_24_04_2024.event;
+package org.yaremax.hackathon8_task_24_04_2024.models.event;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.yaremax.hackathon8_task_24_04_2024.user.UserEntity;
 import org.yaremax.hackathon8_task_24_04_2024.exceptions.ResourceNotFoundException;
+import org.yaremax.hackathon8_task_24_04_2024.models.user.UserEntity;
 import org.yaremax.hackathon8_task_24_04_2024.util.ReferenceService;
 
 import java.time.LocalDate;
